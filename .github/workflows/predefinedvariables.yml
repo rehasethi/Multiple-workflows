@@ -1,0 +1,22 @@
+name: CI
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+jobs:
+  Buildandpushdocker:
+    runs-on: ubuntu-latest
+    # environment: Dev
+    env:
+      var1: 'this variable is for demo'
+    steps:
+      - name: github Actor 
+        run: echo "who triggered the workflow ${{ github.actor }} repo is ${{github.repository}} lastcommit ${{ github.sha}} and event name $${{github.event_name}} " 
+      - name: creatting file 
+        run: echo  ${{  github.actor }} >> actorname.txt 
+      - name: print 
+        run: cat actorname.txt 
+      - name: print varibale value 
+        run: echo $var1
